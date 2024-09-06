@@ -1,8 +1,10 @@
-// background.js
+chrome.runtime.onInstalled.addListener(() => {
+    console.log('Service Worker 已安装');
+});
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    // 检查网页是否加载完成
     if (changeInfo.status === 'complete' && (tab.url.includes("https://www.vecmul.com/") || tab.url.includes("https://api.vecmul.com/"))) {
-        // 向内容脚本发送消息
+        console.log(`网页加载完成: ${tab.url}`);
         chrome.tabs.sendMessage(tabId, { action: "keepCountAtZero" });
     }
 });
