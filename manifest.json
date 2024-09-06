@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Keep Chat Request Count Zero",
+    "version": "0.1",
+    "description": "始终将localStorage中chat-request项的计数保持为0",
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.vecmul.com/*",
+                "https://api.vecmul.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
